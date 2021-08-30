@@ -1,6 +1,11 @@
 # Express IP
 
-This is an express module for getting IP information using geoip-country. It can also be used as express middleware. Basically its an express middleware. So with this, you can get info about an IP. Support: Cloudflare, Sucuri, Incapsula, AnyProxy , proxy
+* This is an express module for getting IP information using geoip-country. 
+It can also be used as express middleware. 
+Basically its an express middleware. 
+So with this, you can get info about an IP. 
+* Work with: Cloudflare, Sucuri, Incapsula, AnyProxy , proxy.
+* Support Typescript
 
 # Installation
 
@@ -10,12 +15,16 @@ npm install @sansamour/express-ip
 
 # Usage
 
+Options:
+* DEVIP: ip for localhost test. Default: 1.1.1.1
+* geoip (boolean): use geoip-country to determine country. Default: true 
+
 ## short
 ```
 const express = require('express');
 const app = express();
 const {getIpInfoMiddleware} = require('@sansamour/express-ip');
-app.use(getIpInfoMiddleware());
+app.use(getIpInfoMiddleware({DEVIP: '2.2.2.2',geoip: false}));
 
 app.get('/', function (req, res) {
     res.send(req.ipInfo);

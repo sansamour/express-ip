@@ -1,6 +1,6 @@
 import * as geoip from 'geoip-country'
 
-export function getIpInfo (ip:string,opts?:any) {        	
+export function getIpInfo (ip:string) {        	
 	var lookedUpIP = geoip.lookup(ip);
 
 	if (!lookedUpIP){
@@ -9,7 +9,7 @@ export function getIpInfo (ip:string,opts?:any) {
 	return lookedUpIP;
 }
 
-export function getIpInfoMiddleware (opts={DEVIP:'1.1.1.1'}){
+export function getIpInfoMiddleware (opts={DEVIP:'1.1.1.1',geoip:true}){
 	return function (req:any, res:any, next:any) {
 		var xForwardedFor = (req.headers['x-forwarded-for'] || '').replace(/:\d+$/, '');
 		var cfConnectingIp = req.headers['cf-connecting-ip'] || '';
@@ -23,7 +23,10 @@ export function getIpInfoMiddleware (opts={DEVIP:'1.1.1.1'}){
 		if ((ip === '127.0.0.1' || ip === '::1')) {
 			ip = opts.DEVIP || '1.1.1.1'
 		}
-		req.ipInfo = { ip, ...getIpInfo(ip,opts) };
+		if(opts.geoip)
+			req.ipInfo = { ip, ...getIpInfo(ip) };
+		else
+			req.ipInfo = { ip };
 		next();
 	}
 }
