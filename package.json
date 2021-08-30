@@ -10,7 +10,7 @@
     "build": "tsc"
   },
   "keywords": [],
-  "author": "",
+  "author": "sansamour <hoidhxd@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "@types/geoip-country": "^4.0.0",
@@ -23,5 +23,9 @@
   ],
   "dependencies": {
     "geoip-country": "^4.0.83"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sansamour/express-ip.git"
+  },
 }
