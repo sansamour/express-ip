@@ -1,6 +1,6 @@
 # Express IP
 
-This is an express module for getting IP information using geoip-country. It can also be used as express middleware. Basically its an express middleware. So with this, you can get info about an IP.
+This is an express module for getting IP information using geoip-country. It can also be used as express middleware. Basically its an express middleware. So with this, you can get info about an IP. Support: Cloudflare, Sucuri, Incapsula, AnyProxy , proxy
 
 # Installation
 
